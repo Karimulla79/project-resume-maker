@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .resume-page {
+    width: 210mm;
+    min-height: 297mm;
+  }
+
+  /* Hidden container that is only visible during print */
+  .print-only {
+    display: none !important;
+  }
+
+  @media print {
+    /* Hide all direct body children except our print-only portal */
+    body > :not(.print-only) {
+      display: none !important;
+    }
+
+    html, body {
+      background: white !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: 0 !important;
+      overflow: visible !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Print-only container: full width, no extra spacing */
+    .print-only {
+      display: block !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* Resume page: natural height — no forced min-height to avoid blank trailing pages */
+    .resume-page {
+      box-shadow: none !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      min-height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: white !important;
+      overflow: visible !important;
+      position: static !important;
+    }
+
+    /* Allow sections to break across pages */
+    .resume-page section {
+      page-break-inside: auto !important;
+      break-inside: auto !important;
+    }
+
+    /* Allow individual jobs/projects to split across pages to fill empty space */
+    .resume-page section > div > div {
+      page-break-inside: auto !important;
+      break-inside: auto !important;
+    }
+
+    /* Avoid splitting in the middle of a single bullet point line or header block */
+    .resume-page li,
+    .resume-page h1,
+    .resume-page h2,
+    .resume-page h3,
+    .resume-page .flex.justify-between.items-start {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+
+    /* ─── Page Scale per "Target pages" selection ─────────────────────────────
+       Adjusts font size, margins, and padding on print output for predictable page limits.
+    ─────────────────────────────────────────────────────────────────────────── */
+
+    /* 2 pages — Very Compact */
+    html[data-print-scale="0.68"] .resume-page {
+      font-size: 8.5px !important;
+    }
+    html[data-print-scale="0.68"] .resume-page section {
+      margin-bottom: 12px !important;
+    }
+    html[data-print-scale="0.68"] .resume-page h1 {
+      font-size: 20px !important;
+      margin-bottom: 2px !important;
+    }
+    html[data-print-scale="0.68"] .resume-page h2 {
+      margin-bottom: 8px !important;
+    }
+    html[data-print-scale="0.68"] .resume-page p,
+    html[data-print-scale="0.68"] .resume-page li,
+    html[data-print-scale="0.68"] .resume-page span,
+    html[data-print-scale="0.68"] .resume-page div {
+      font-size: 8.5px !important;
+      line-height: 1.25 !important;
+    }
+    html[data-print-scale="0.68"] .resume-page .space-y-8 > * {
+      margin-top: 6px !important;
+      margin-bottom: 6px !important;
+    }
+    html[data-print-scale="0.68"] .resume-page ul {
+      margin-top: 4px !important;
+    }
+
+    /* 3 pages — Compact */
+    html[data-print-scale="0.78"] .resume-page {
+      font-size: 9.5px !important;
+    }
+    html[data-print-scale="0.78"] .resume-page section {
+      margin-bottom: 16px !important;
+    }
+    html[data-print-scale="0.78"] .resume-page h1 {
+      font-size: 26px !important;
+      margin-bottom: 4px !important;
+    }
+    html[data-print-scale="0.78"] .resume-page h2 {
+      margin-bottom: 12px !important;
+    }
+    html[data-print-scale="0.78"] .resume-page p,
+    html[data-print-scale="0.78"] .resume-page li,
+    html[data-print-scale="0.78"] .resume-page span,
+    html[data-print-scale="0.78"] .resume-page div {
+      font-size: 9.5px !important;
+      line-height: 1.35 !important;
+    }
+    html[data-print-scale="0.78"] .resume-page .space-y-8 > * {
+      margin-top: 10px !important;
+      margin-bottom: 10px !important;
+    }
+
+    /* 4 pages — Normal (Default) */
+    html[data-print-scale="0.90"] .resume-page {
+      font-size: 11px !important;
+    }
+    html[data-print-scale="0.90"] .resume-page p,
+    html[data-print-scale="0.90"] .resume-page li,
+    html[data-print-scale="0.90"] .resume-page span,
+    html[data-print-scale="0.90"] .resume-page div {
+      font-size: 10.5px !important;
+      line-height: 1.45 !important;
+    }
+
+    /* 5 pages — Spacious */
+    html[data-print-scale="1.00"] .resume-page {
+      font-size: 12px !important;
+    }
+    html[data-print-scale="1.00"] .resume-page section {
+      margin-bottom: 24px !important;
+    }
+    html[data-print-scale="1.00"] .resume-page p,
+    html[data-print-scale="1.00"] .resume-page li,
+    html[data-print-scale="1.00"] .resume-page span,
+    html[data-print-scale="1.00"] .resume-page div {
+      font-size: 12px !important;
+      line-height: 1.55 !important;
+    }
+
+    /* 6 pages — Extra Spacious */
+    html[data-print-scale="1.12"] .resume-page {
+      font-size: 13.5px !important;
+    }
+    html[data-print-scale="1.12"] .resume-page section {
+      margin-bottom: 28px !important;
+    }
+    html[data-print-scale="1.12"] .resume-page p,
+    html[data-print-scale="1.12"] .resume-page li,
+    html[data-print-scale="1.12"] .resume-page span,
+    html[data-print-scale="1.12"] .resume-page div {
+      font-size: 13.5px !important;
+      line-height: 1.65 !important;
+    }
+
+    /* 
+      A4 page margin setup: 15mm top/bottom margin ensures that when content flows 
+      onto Page 2, Page 3, etc., it automatically starts with "2 lines of space" 
+      at the top, keeping the presentation professional and readable.
+    */
+    @page {
+      size: A4 portrait;
+      margin: 15mm 12mm;
+    }
+  }
+}

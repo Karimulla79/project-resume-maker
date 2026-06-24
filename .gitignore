@@ -1,0 +1,54 @@
+# ─── PRIVATE & SENSITIVE DATA (DO NOT SHARE PUBLICLY) ─────────────────
+# Never commit your API keys, credentials, or local configs to git!
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+*.pfx
+*.cert
+
+# ─── DEPENDENCIES ─────────────────────────────────────────────────────
+# Node packages (installed locally, very large, do not commit)
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# ─── BUILD OUTPUTS ────────────────────────────────────────────────────
+# Next.js build directories
+/.next/
+/out/
+/build
+/dist
+*.tsbuildinfo
+next-env.d.ts
+
+# ─── SYSTEM & METADATA FILES ──────────────────────────────────────────
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+Thumds.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# ─── DEBUGGING & LOGS ─────────────────────────────────────────────────
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.eslintcache

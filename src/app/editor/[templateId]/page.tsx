@@ -121,7 +121,7 @@ export default function EditorPage() {
             <div>
               <h1 className="font-semibold text-gray-900">{template.name} Template</h1>
               <p className="text-xs text-gray-500">
-                Auto-saved locally • <span className="text-brand-600 font-medium">Tip: Uncheck "Headers and footers" in print options to hide page numbers/dates</span>
+                Auto-saved locally • <span className="text-brand-600 font-medium">Tip: Uncheck &quot;Headers and footers&quot; in print options to hide page numbers/dates</span>
               </p>
             </div>
           </div>
